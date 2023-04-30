@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Validators,UntypedFormBuilder , UntypedFormGroup} from '@angular/forms'
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +23,16 @@ export class LoginComponent {
     }
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
+  registerRedirect(): void {
+    this.router.navigateByUrl("/register");
+  }
 
+  constructor(private fb: UntypedFormBuilder, private router: Router) { }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      email: [null, [Validators.required]],
       password: [null, [Validators.required]],
+      remember:[null]
     });
   }
 }

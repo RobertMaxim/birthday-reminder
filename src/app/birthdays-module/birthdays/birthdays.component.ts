@@ -11,7 +11,7 @@ export class BirthdaysComponent implements OnInit {
   friendList: Friend[] = [];
 
   ngOnInit(): void {
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 30; index++) {
       let friend: Friend = {
         id: index,
         lastName: 'Last Name ' + index,

@@ -1,21 +1,38 @@
-<nz-table #friendsTable [nzData]="friendList">
-  <thead>
-    <tr>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>Email</th>
-      <th>Birthdate</th>
-      <th>Phone Number</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let friend of friendList">
-      <td>{{friend.lastName}}</td>
-      <td>{{friend.firstName}}</td>
-      <td>{{friend.email}}</td>
-      <td>{{friend.birthdate | date:"dd/MM/yyyy"}}</td>
-      <td>{{friend.phoneNumber}}</td>
-    </tr>
-  </tbody>
-</nz-table>
-sex
+<nz-layout>
+  <nz-header>
+    <app-topbar></app-topbar>
+  </nz-header>
+  <nz-content>
+    <nz-table
+      #friendsTable
+      [nzData]="friendList"
+      [nzFrontPagination]="false"
+      [nzBordered]="true"
+      [nzScroll]="{x:'100%',y:'1000px'}"
+    >
+      <thead>
+        <tr>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Birthdate</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let friend of friendList">
+          <td>{{ friend.lastName }}</td>
+          <td>{{ friend.firstName }}</td>
+          <td>{{ friend.email }}</td>
+          <td>{{ friend.birthdate | date : "dd/MM/yyyy" }}</td>
+          <td>{{ friend.phoneNumber }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-content>
+  <nz-footer class="footer">
+    Made by fratziori
+    <a href="https://www.instagram.com/beby__the__beb">@beby__the__beb</a> &
+    <a href="https://www.instagram.com/robertmaxim">@robertmaxim</a>
+  </nz-footer>
+</nz-layout>

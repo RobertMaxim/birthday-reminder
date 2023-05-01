@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Friend } from '../friend';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-birthdays',
@@ -9,14 +10,11 @@ import { Friend } from '../friend';
 export class BirthdaysComponent implements OnInit {
   constructor() {}
   friendList: Friend[] = [];
-  addPopUpVisible:boolean = false;
+  clickAddButton: Subject<void> = new Subject();
 
-  onAddButtonClick():void{
-    this.addPopUpVisible=true;
-    console.log("isVisible: ",this.addPopUpVisible);
-
+  onAddButtonClick(): void {
+    this.clickAddButton.next();
   }
-
 
   ngOnInit(): void {
     for (let index = 0; index < 30; index++) {
@@ -25,11 +23,10 @@ export class BirthdaysComponent implements OnInit {
         lastName: 'Last Name ' + index,
         firstName: 'First Name ' + index,
         email: 'Email ' + index,
-        birthdate: new Date(2023, 5, index+1),
+        birthdate: new Date(2023, 5, index + 1),
         phoneNumber: '000000000' + index,
       };
       this.friendList.push(friend);
     }
   }
-
 }

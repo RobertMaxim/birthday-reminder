@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-topbar',
@@ -9,7 +10,6 @@ export class TopbarComponent {
   @Output() addFriendEvent = new EventEmitter();
 
   onAddButtonClick() {
-    console.log("add was clicked");
     this.addFriendEvent.emit();
   }
 }

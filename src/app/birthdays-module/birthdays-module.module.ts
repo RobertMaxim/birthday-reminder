@@ -7,11 +7,16 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
     BirthdaysComponent,
     TopbarComponent,
+    AddFriendComponent,
 
   ],
   imports: [
@@ -20,7 +25,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzTableModule,
     NzMenuModule,
     NzLayoutModule,
-    NzIconModule
+    NzIconModule,
+    NzModalModule,
+    NzButtonModule
   ]
 })
 export class BirthdaysModuleModule { }

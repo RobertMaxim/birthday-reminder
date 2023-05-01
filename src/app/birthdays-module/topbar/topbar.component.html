@@ -1,6 +1,6 @@
 <ul nz-menu nzMode="horizontal" nzTheme="dark" class="topmar">
-  <div class="main-items">
-    <li nz-menu-item class="disable-selection">
+  <span class="main-items">
+    <li nz-menu-item class="disable-selection" (click)="onAddButtonClick()">
       <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
       Add
     </li>
@@ -12,10 +12,9 @@
       <span nz-icon nzType="edit" nzTheme="outline"></span>
       Edit
     </li>
-  </div>
+  </span>
     <li nz-menu-item class="disable-selection">
       <span nz-icon nzType="logout" nzTheme="outline"></span>
       Logout
     </li>
-
 </ul>

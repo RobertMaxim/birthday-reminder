@@ -9,6 +9,14 @@ import { Friend } from '../friend';
 export class BirthdaysComponent implements OnInit {
   constructor() {}
   friendList: Friend[] = [];
+  addPopUpVisible:boolean = false;
+
+  onAddButtonClick():void{
+    this.addPopUpVisible=true;
+    console.log("isVisible: ",this.addPopUpVisible);
+
+  }
+
 
   ngOnInit(): void {
     for (let index = 0; index < 30; index++) {

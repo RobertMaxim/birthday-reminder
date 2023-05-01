@@ -1,6 +1,12 @@
+<app-add-friend
+[isVisible]="addPopUpVisible"
+>
+</app-add-friend>
 <nz-layout>
   <nz-header>
-    <app-topbar></app-topbar>
+    <app-topbar
+    (addFriendEvent)="onAddButtonClick()"
+    ></app-topbar>
   </nz-header>
   <nz-content class="content-class">
     <nz-table

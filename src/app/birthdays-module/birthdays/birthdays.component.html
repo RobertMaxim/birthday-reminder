@@ -2,13 +2,13 @@
   <nz-header>
     <app-topbar></app-topbar>
   </nz-header>
-  <nz-content>
+  <nz-content class="content-class">
     <nz-table
       #friendsTable
       [nzData]="friendList"
       [nzFrontPagination]="false"
       [nzBordered]="true"
-      [nzScroll]="{x:'100%',y:'1000px'}"
+      class="table-class"
     >
       <thead>
         <tr>

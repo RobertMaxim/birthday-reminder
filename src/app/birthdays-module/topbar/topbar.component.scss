@@ -1,3 +1,12 @@
 .disable-selection{
   user-select: none;
 }
+.main-items{
+  display: flex;
+  margin-right: 80vw;
+}
+
+.topmar{
+  display: flex;
+  justify-content: space-evenly;
+}

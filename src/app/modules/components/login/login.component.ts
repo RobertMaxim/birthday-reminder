@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms'
+import { Validators, UntypedFormBuilder, UntypedFormGroup, AbstractControl } from '@angular/forms'
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,8 +30,11 @@ export class LoginComponent {
   constructor(private fb: UntypedFormBuilder, private router: Router) { }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      email: [null, [Validators.required,
+      Validators.pattern("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")]],
+      password: [null, [Validators.required,
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+    ]],
       remember:[null]
     });
   }

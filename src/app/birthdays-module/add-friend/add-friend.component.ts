@@ -14,7 +14,8 @@ import { DisabledTimeFn, DisabledTimePartial } from 'ng-zorro-antd/date-picker';
 export class AddFriendComponent implements OnInit {
   @Input('isVisible') isVisible: boolean = false;
   @Input('onAddClickSubject') clickSubject: Subject<void> = new Subject<void>();
-
+  friends:Friend[]=[];
+  
   friendToAdd:Friend={
     lastName:'',
     firstName:'',

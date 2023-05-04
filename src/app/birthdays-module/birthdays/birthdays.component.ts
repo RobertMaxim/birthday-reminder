@@ -17,15 +17,14 @@ export class BirthdaysComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    for (let index = 0; index < 30; index++) {
-      let friend: Friend = {
-        lastName: 'Last Name ' + index,
-        firstName: 'First Name ' + index,
-        email: 'Email ' + index,
-        birthdate: new Date(2023, 5, index + 1),
-        phoneNumber: '000000000' + index,
-      };
-      this.friendList.push(friend);
-    }
+    let friend: Friend = {
+      lastName: 'Maxim',
+      firstName: 'Robert - Gabriel',
+      email: 'rmaxim@talentingsoftware.com',
+      birthdate: new Date(2001, 11, 12),
+      phoneNumber: '0771456682',
+    };
+
+    this.friendList.push(friend);
   }
 }

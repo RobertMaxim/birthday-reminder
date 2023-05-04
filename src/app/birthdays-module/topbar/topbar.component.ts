@@ -15,6 +15,8 @@ export class TopbarComponent {
     this.addFriendEvent.emit();
   }
 
+  
+
   logout() {
     this.router.navigateByUrl('/')
   }

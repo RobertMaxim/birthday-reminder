@@ -12,6 +12,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzIconModule,
     NzModalModule,
     NzButtonModule,
-    NzFormModule
+    NzFormModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NzDatePickerModule
   ]
 })
 export class BirthdaysModuleModule { }

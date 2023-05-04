@@ -5,102 +5,84 @@
   nzTitle="Add a friend to your friends list"
 >
   <ng-container *nzModalContent>
-    <form nz-form>
-      <nz-form-item>
-        <nz-form-label
-        [nzSm]="6"
-        [nzXs]="24"
-        nzRequired nzFor="lastName"
-          >Last Name</nz-form-label
-        >
-        <nz-form-control nzErrorTip="Please input the last name!">
-          <nz-input-group nzPrefixIcon="user">
-            <input
-              nz-input
-              type="text"
-              class="form-input"
-              formControlName="lastName"
-              placeholder="Last name"
-            />
-          </nz-input-group>
-        </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-label
-          [nzSm]="6"
-          [nzXs]="24"
-          nzRequired nzFor="firstName"
-            >First Name</nz-form-label
-          >
-          <nz-form-control nzErrorTip="Please input the first name!">
-            <nz-input-group nzPrefixIcon="user">
-              <input
-                nz-input
-                type="text"
-                class="form-input"
-                formControlName="firstName"
-                placeholder="First Name"
-              />
-            </nz-input-group>
-          </nz-form-control>
-</nz-form-item>
-          <nz-form-item>
-            <nz-form-label
-            [nzSm]="6"
-            [nzXs]="24"
-            nzRequired nzFor="emailLabel"
-              >Email</nz-form-label
-            >
-            <nz-form-control nzErrorTip="Please input the email!">
-              <nz-input-group nzPrefixIcon="user">
-                <input
-                  nz-input
-                  type="text"
-                  class="form-input"
-                  formControlName="emailLabel"
-                  placeholder="example@example.com"
-                />
-              </nz-input-group>
-            </nz-form-control>
-</nz-form-item>
-            <nz-form-item>
-              <nz-form-label
-              [nzSm]="6"
-              [nzXs]="24"
-              nzRequired nzFor="birthDate"
-                >Birth Date</nz-form-label
-              >
-              <nz-form-control nzErrorTip="Please input the birth date!">
-                <nz-input-group nzPrefixIcon="user">
-                  <input
-                    nz-input
-                    type="text"
-                    class="form-input"
-                    formControlName="birthDate"
-                    placeholder="Birth Date"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-</nz-form-item>
-              <nz-form-item>
-                <nz-form-label
-                [nzSm]="6"
-                [nzXs]="24"
-                nzRequired nzFor="phoneNumber"
-                  >Phone Number</nz-form-label
-                >
-                <nz-form-control nzErrorTip="Please input the phone number!">
-                  <nz-input-group nzPrefixIcon="user">
-                    <input
-                      nz-input
-                      type="text"
-                      class="form-input"
-                      formControlName="phoneNumber"
-                      placeholder="1234567890"
-                    />
-                  </nz-input-group>
-                </nz-form-control>
-              </nz-form-item>
-    </form>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName"
+        >Last Name</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the last name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="Last name"
+            [(ngModel)]="friendToAdd.lastName"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName"
+        >First Name</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the first name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="First Name"
+            [(ngModel)]="friendToAdd.firstName"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="emailLabel"
+        >Email</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the email!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="example@example.com"
+            [(ngModel)]="friendToAdd.email"
+            g
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="birthDate"
+        >Birth Date</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the birth date!">
+        <nz-input-group nzPrefixIcon="user">
+          <nz-date-picker
+            [(ngModel)]="friendToAdd.birthdate"
+            class="form-input"
+            [nzDisabledDate]="disabledDate"
+          ></nz-date-picker>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phoneNumber"
+        >Phone Number</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the phone number!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="1234567890"
+            [(ngModel)]="friendToAdd.phoneNumber"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
   </ng-container>
 </nz-modal>

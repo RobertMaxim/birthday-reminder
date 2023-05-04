@@ -1,8 +1,7 @@
 export interface Friend {
-  id:number
   lastName:string
   firstName:string
   email:string
-  birthdate: Date
+  birthdate: Date|null
   phoneNumber:string
 }

@@ -1,0 +1,44 @@
+.login-form {
+    width: 300px;
+}
+
+.login-form-margin {
+    margin-bottom: 16px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.login-form-container {
+    height: 100%;
+    /* Center vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    border:2px solid gray;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-input{
+text-align: center;
+display:block;
+margin:auto;
+border-radius: 10px;
+border:2px solid gray;
+width: 250px;
+height: 25px;
+}
+
+.register-card{
+    justify-content: center;
+}

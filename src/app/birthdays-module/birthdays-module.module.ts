@@ -11,6 +11,7 @@ import { AddFriendComponent } from './add-friend/add-friend.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzButtonSize } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
     NzLayoutModule,
     NzIconModule,
     NzModalModule,
-    NzButtonModule
+    NzButtonModule,
+    NzFormModule
   ]
 })
 export class BirthdaysModuleModule { }

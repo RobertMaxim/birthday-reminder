@@ -1,4 +1,17 @@
 <nz-modal
 [(nzVisible)]="isVisible"
-(nzOnCancel)="onCloseButtonClick()">
+(nzOnCancel)="onCloseButtonClick()"
+nzTitle="Add a friend to your friends list">
+<ng-container *nzModalContent>
+  <form nz-form>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="email">E-mail</nz-form-label>
+      <nz-form-control [nzSpan]="14">
+        <input nz-input name="email" type="email" id="email">
+      </nz-form-control>
+    </nz-form-item >
+  </form>
+  
+</ng-container>
+
 </nz-modal>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Validators, UntypedFormBuilder, UntypedFormGroup, AbstractControl } from '@angular/forms'
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   validateForm!: UntypedFormGroup;
+  loggingUser: User = { email: '', password: ''};
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      if (this.authService.login(this.loggingUser)) {
+        this.router.navigateByUrl("/birthdays");
+      }
+      else {
+        this.loggingUser.email='';
+        this.loggingUser.password='';
+        this.router.navigateByUrl('/');
+      }
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -27,15 +37,15 @@ export class LoginComponent {
     this.router.navigateByUrl("/register");
   }
 
-  constructor(private fb: UntypedFormBuilder, private router: Router) { }
+  constructor(private fb: UntypedFormBuilder, private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       email: [null, [Validators.required,
       Validators.pattern("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")]],
       password: [null, [Validators.required,
       Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
-    ]],
-      remember:[null]
+      ]],
+      remember: [null]
     });
   }
 }

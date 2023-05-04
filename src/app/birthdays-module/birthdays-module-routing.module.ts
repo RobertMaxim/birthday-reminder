@@ -4,7 +4,7 @@ import { BirthdaysComponent } from './birthdays/birthdays.component';
 
 const routes: Routes = [
   {
-    path:'birthdays',
+    path:'',
     component:BirthdaysComponent
   }
 ];

@@ -19,6 +19,10 @@ export class AddFriendComponent implements OnInit {
     this.isVisible = false;
     console.log('isVisible: ', this.isVisible);
   }
+  onSubmitButtonClick():void{
+    this.isVisible = false;
+
+  }
   ngOnDestroy() {
     this.clickSubject.unsubscribe();
   }

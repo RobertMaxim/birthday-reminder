@@ -1,6 +1,7 @@
 <nz-modal
   [(nzVisible)]="isVisible"
   (nzOnCancel)="onCloseButtonClick()"
+  (nzOnOk)="onSubmitButtonClick()"
   nzTitle="Add a friend to your friends list"
 >
   <ng-container *nzModalContent>

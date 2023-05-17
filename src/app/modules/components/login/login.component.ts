@@ -20,7 +20,7 @@ export class LoginComponent {
           email: this.loggingUser.email,
           rememberMe: this.loggingUser.rememberMe
         };
-        sessionStorage.setItem("loggedInUserEmail", JSON.stringify(storeUserData));
+        sessionStorage.setItem("loggedInUserEmail", storeUserData.email);
         this.router.navigateByUrl("/birthdays");
       }
       else {

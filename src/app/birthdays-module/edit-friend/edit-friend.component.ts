@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Friend } from '../../model/interface/friend';
 import { differenceInCalendarDays, setHours } from 'date-fns';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-edit-friend',
@@ -9,14 +10,17 @@ import { differenceInCalendarDays, setHours } from 'date-fns';
   styleUrls: ['./edit-friend.component.scss']
 })
 export class EditFriendComponent {
+  constructor(private authService:AuthService){}
   isVisible: boolean = false;
   @Input('onEditClickSubject') clickSubject: Subject<string> = new Subject<string>();
+
+
   serializedFriend:string="";
-  friendToEdit:Friend={
-    lastName:'Edit',
-    firstName:'Edit',
-    email:'Edit',
-    phoneNumber:'Edit',
+  friendToEdit:Friend|null={
+    lastName:'',
+    firstName:'',
+    email:'',
+    phoneNumber:'',
     birthdate:null
   }
 
@@ -26,13 +30,10 @@ export class EditFriendComponent {
 
   ngOnInit(): void {
     this.clickSubject.subscribe((receivedEmail) => {
-      console.log(receivedEmail);
-
-      this.friendToEdit.lastName='Edit';
-      this.friendToEdit.firstName='Edit';
-      this.friendToEdit.email='Edit';
-      this.friendToEdit.birthdate=null;
-      this.friendToEdit.phoneNumber='Edit';
+      let serializedFriend = JSON.stringify(this.authService.getFriendByEmailForLoggedInUser(receivedEmail));
+      if(serializedFriend!=null){
+        this.friendToEdit =JSON.parse(serializedFriend);
+      }
       this.isVisible = true;
     });
   }
@@ -44,8 +45,11 @@ export class EditFriendComponent {
   onSubmitButtonClick():void{
     this.serializedFriend = JSON.stringify(this.friendToEdit);
     console.log(this.serializedFriend);
+    this.authService.updateFriendByEmail(this.friendToEdit);
+    this.isVisible = false;
   }
   ngOnDestroy() {
     this.clickSubject.unsubscribe();
   }
+
 }

@@ -6,32 +6,53 @@ import { Friend } from '../model/interface/friend';
 @Injectable({
   providedIn: 'root',
 })
-
 export class AuthService {
-  defaultFriends:Friend[]=[{
-    lastName: 'Maxim',
-    firstName: 'Robert - Gabriel',
-    email: 'rmaxim@talentingsoftware.com',
-    birthdate: new Date(2001, 11, 12),
-    phoneNumber: '0746311463'
-  },
-  {
-    lastName: 'Beres',
-    firstName: 'Andrei - Daniel',
-    email: 'aberes@talentingsoftware.com',
-    birthdate: new Date(2002, 2, 15),
-    phoneNumber: '0771456682',
-  }];
-
-  userList: User[] = [
-    { email: 'benzema@yahoo.com', password: 'P@rola1423',friends:this.defaultFriends},
-    { email: 'pepsi@trist.com', password: 'P@rola1423' ,friends:this.defaultFriends},
-    { email: 'roby_dark2001@yahoo.com', password: 'P@rola1423' ,friends:this.defaultFriends},
-    { email: 'aberes@yahoo.com', password: 'P@rola1423' ,friends:this.defaultFriends},
-    { email: 'test@yahoo.com', password: 'P@rola1423',friends:this.defaultFriends },
+  defaultFriends: Friend[] = [
+    {
+      lastName: 'Maxim',
+      firstName: 'Robert - Gabriel',
+      email: 'rmaxim@talentingsoftware.com',
+      birthdate: new Date(2001, 11, 12),
+      phoneNumber: '0746311463',
+    },
+    {
+      lastName: 'Beres',
+      firstName: 'Andrei - Daniel',
+      email: 'aberes@talentingsoftware.com',
+      birthdate: new Date(2002, 2, 15),
+      phoneNumber: '0771456682',
+    },
   ];
 
-  baseUrl="https://rickandmortyapi.com/api/character/";
+  userList: User[] = [
+    {
+      email: 'benzema@yahoo.com',
+      password: 'P@rola1423',
+      friends: this.defaultFriends,
+    },
+    {
+      email: 'pepsi@trist.com',
+      password: 'P@rola1423',
+      friends: this.defaultFriends,
+    },
+    {
+      email: 'roby_dark2001@yahoo.com',
+      password: 'P@rola1423',
+      friends: this.defaultFriends,
+    },
+    {
+      email: 'aberes@yahoo.com',
+      password: 'P@rola1423',
+      friends: this.defaultFriends,
+    },
+    {
+      email: 'test@yahoo.com',
+      password: 'P@rola1423',
+      friends: this.defaultFriends,
+    },
+  ];
+
+  baseUrl = 'https://rickandmortyapi.com/api/character/';
 
   register(userToBeRegistered: User) {
     this.userList.push(userToBeRegistered);
@@ -46,27 +67,72 @@ export class AuthService {
   }
 
   getUserByEmail(email: string): User | undefined {
-    return this.userList.find(data => data.email == email);
+    return this.userList.find((data) => data.email == email);
   }
 
-  getAvatar(){
-    return this.http.get<string>(this.baseUrl+Math.floor(Math.random()*(825)+1));
+  getAvatar() {
+    return this.http.get<string>(
+      this.baseUrl + Math.floor(Math.random() * 825 + 1)
+    );
   }
 
-  addFriend(friendToAdd:Friend):void{
-    let loggedInUserEmail = sessionStorage.getItem("loggedInUserEmail");
-    if(loggedInUserEmail){
-      let loggedInUser = this.userList.find(u=>u.email==loggedInUserEmail);
+  addFriend(friendToAdd: Friend): void {
+    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    if (loggedInUserEmail) {
+      let loggedInUser = this.userList.find(
+        (u) => u.email == loggedInUserEmail
+      );
       loggedInUser?.friends?.push(friendToAdd);
     }
   }
-  getFriendsForLoggedInUser():Friend[]{
-    let loggedInUserEmail = sessionStorage.getItem("loggedInUserEmail");
-    if(loggedInUserEmail){
-      let loggedInUser = this.userList.find(u=>u.email==loggedInUserEmail);
-      return loggedInUser?.friends?.length!=null ? loggedInUser?.friends : [];
+  getFriendsForLoggedInUser(): Friend[] {
+    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    if (loggedInUserEmail) {
+      let loggedInUser = this.userList.find(
+        (u) => u.email == loggedInUserEmail
+      );
+      return loggedInUser?.friends?.length != null ? loggedInUser?.friends : [];
     }
     return [];
   }
-  constructor(private http:HttpClient) { }
+
+  getFriendByEmailForLoggedInUser(friendEmail: string): Friend | null {
+    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    if (loggedInUserEmail) {
+      let loggedInUser = this.userList.find(
+        (u) => u.email == loggedInUserEmail
+      );
+      let friendToEdit = loggedInUser?.friends?.find(
+        (f) => f.email == friendEmail
+      );
+      if (friendToEdit) {
+        let serializedFriend = JSON.stringify(friendToEdit);
+        let dereferencedFriend: Friend = JSON.parse(serializedFriend);
+        return dereferencedFriend;
+      } else {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  updateFriendByEmail(updatedFriend: Friend): void {
+    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    if (loggedInUserEmail) {
+      for (let i = 0; i < this.userList.length; i++) {
+        if(this.userList[i].email == loggedInUserEmail){
+          for (let j = 0; j < this.userList[i].friends.length; j++) {
+            if (this.userList[i].friends[j].email == updatedFriend.email) {
+              let serializedFriend = JSON.stringify(updatedFriend);
+              let dereferencedFriend: Friend = JSON.parse(serializedFriend);
+              this.userList[i].friends[j] = dereferencedFriend;
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  constructor(private http: HttpClient) {}
 }

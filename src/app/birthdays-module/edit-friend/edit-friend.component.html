@@ -16,7 +16,7 @@
             type="text"
             class="form-input"
             placeholder="Last name"
-            [(ngModel)]="friendToEdit.lastName"
+            [(ngModel)]="friendToEdit!.lastName"
           />
         </nz-input-group>
       </nz-form-control>
@@ -32,25 +32,23 @@
             type="text"
             class="form-input"
             placeholder="First Name"
-            [(ngModel)]="friendToEdit.firstName"
+            [(ngModel)]="friendToEdit!.firstName"
           />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="emailLabel"
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="emailLabel"
         >Email</nz-form-label
       >
-      <nz-form-control nzErrorTip="Please input the email!">
+      <nz-form-control >
         <nz-input-group nzPrefixIcon="user">
           <input
-            nz-input
             type="text"
             class="form-input"
-            placeholder="example@example.com"
-            [(ngModel)]="friendToEdit.email"
-            g
-          />
+            [(ngModel)]="friendToEdit!.email"
+            [disabled]="true"
+            />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
@@ -61,7 +59,7 @@
       <nz-form-control nzErrorTip="Please input the birth date!">
         <nz-input-group nzPrefixIcon="user">
           <nz-date-picker
-            [(ngModel)]="friendToEdit.birthdate"
+            [(ngModel)]="friendToEdit!.birthdate"
             class="form-input"
             [nzDisabledDate]="disabledDate"
           ></nz-date-picker>
@@ -79,7 +77,7 @@
             type="text"
             class="form-input"
             placeholder="1234567890"
-            [(ngModel)]="friendToEdit.phoneNumber"
+            [(ngModel)]="friendToEdit!.phoneNumber"
           />
         </nz-input-group>
       </nz-form-control>

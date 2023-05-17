@@ -4,14 +4,14 @@
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your email!">
                     <nz-input-group nzPrefixIcon="user">
-                        <input type="email" class="form-input" nz-input formControlName="email" placeholder="Email" />
+                        <input [(ngModel)]="registeredUser.email" type="email" class="form-input" nz-input formControlName="email" placeholder="Email" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your password!">
                     <nz-input-group nzPrefixIcon="lock">
-                        <input type="password" class="form-input" nz-input formControlName="password" placeholder="Password" />
+                        <input [(ngModel)]="registeredUser.password" type="password" class="form-input" nz-input formControlName="password" placeholder="Password" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
@@ -25,7 +25,7 @@
             <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your first name!">
                     <nz-input-group nzPrefixIcon="user">
-                        <input type="text" class="form-input" nz-input formControlName="firstName" placeholder="First name" />
+                        <input [(ngModel)]="registeredUser.firstName" type="text" class="form-input" nz-input formControlName="firstName" placeholder="First name" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
@@ -33,7 +33,7 @@
               
                 <nz-form-control nzErrorTip="Please input your last name!">
                     <nz-input-group nzPrefixIcon="user">
-                        <input type="text" class="form-input" nz-input formControlName="lastName" placeholder="Last name" />
+                        <input [(ngModel)]="registeredUser.lastName" type="text" class="form-input" nz-input formControlName="lastName" placeholder="Last name" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>

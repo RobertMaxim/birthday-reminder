@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Friend } from '../friend';
+import { Friend } from '../../model/interface/friend';
 import { Subject } from 'rxjs';
 
 @Component({

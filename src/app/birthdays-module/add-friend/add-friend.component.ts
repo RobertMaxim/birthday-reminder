@@ -1,4 +1,4 @@
-import { Friend } from './../friend';
+import { Friend } from '../../model/interface/friend';
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { differenceInCalendarDays, setHours } from 'date-fns';
@@ -23,6 +23,7 @@ export class AddFriendComponent implements OnInit {
     phoneNumber:'',
     birthdate:null
   }
+
   today= new Date();
   disabledDate = (current: Date): boolean =>
   differenceInCalendarDays(current, this.today) > 0;
@@ -38,6 +39,7 @@ export class AddFriendComponent implements OnInit {
       this.isVisible = true;
     });
   }
+  
   onCloseButtonClick(): void {
     this.isVisible = false;
     console.log('isVisible: ', this.isVisible);

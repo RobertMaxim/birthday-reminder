@@ -4,6 +4,7 @@ import { User } from '../model/user';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthService {
   userList: User[] = [
     { email: 'benzema@yahoo.com', password: 'P@rola1423' },
@@ -24,5 +25,6 @@ export class AuthService {
         user.password == loggingInUser.password
     );
   }
-  constructor() {}
+
+  constructor() { }
 }

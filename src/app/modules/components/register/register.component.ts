@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,11 +11,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   validateForm!: UntypedFormGroup;
+  registeredUser:User={email:'', password:''};
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-
+      debugger;
+      this.authService.register(this.registeredUser);
+      this.redirectToLogin();
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -28,7 +32,7 @@ export class RegisterComponent {
     this.router.navigateByUrl('');
   }
 
-  constructor(private fb: UntypedFormBuilder, private router: Router) { }
+  constructor(private fb: UntypedFormBuilder, private router: Router, private authService:AuthService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

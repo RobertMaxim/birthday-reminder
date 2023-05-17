@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Friend } from 'src/app/model/interface/friend';
+import { Friend } from '../../model/interface/friend';
 import { differenceInCalendarDays, setHours } from 'date-fns';
 
 @Component({

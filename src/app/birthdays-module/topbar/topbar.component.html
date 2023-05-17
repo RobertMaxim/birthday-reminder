@@ -8,7 +8,7 @@
       <span nz-icon nzType="minus-circle" nzTheme="outline"></span>
       Remove
     </li>
-    <li nz-menu-item class="disable-selection" [nzDisabled]="true">
+    <li nz-menu-item class="disable-selection" (click)="onEditButtonClick()">
       <span nz-icon nzType="edit" nzTheme="outline"></span>
       Edit
     </li>

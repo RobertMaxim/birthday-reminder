@@ -9,15 +9,21 @@ import { Subject } from 'rxjs';
 })
 export class TopbarComponent {
   @Output() addFriendEvent = new EventEmitter();
+  @Output() editFriendEvent = new EventEmitter();
 
   constructor(private router: Router) { }
   onAddButtonClick() {
     this.addFriendEvent.emit();
   }
+  onEditButtonClick(){
+    console.log("received event");
+    this.editFriendEvent.emit();
+  }
 
-  
+
 
   logout() {
+    sessionStorage.clear();
     this.router.navigateByUrl('/')
   }
 }

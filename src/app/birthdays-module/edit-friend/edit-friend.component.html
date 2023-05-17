@@ -1,0 +1,88 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="onCloseButtonClick()"
+  (nzOnOk)="onSubmitButtonClick()"
+  nzTitle="Add a friend to your friends list"
+>
+  <ng-container *nzModalContent>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName"
+        >Last Name</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the last name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="Last name"
+            [(ngModel)]="friendToEdit.lastName"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName"
+        >First Name</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the first name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="First Name"
+            [(ngModel)]="friendToEdit.firstName"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="emailLabel"
+        >Email</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the email!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="example@example.com"
+            [(ngModel)]="friendToEdit.email"
+            g
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="birthDate"
+        >Birth Date</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the birth date!">
+        <nz-input-group nzPrefixIcon="user">
+          <nz-date-picker
+            [(ngModel)]="friendToEdit.birthdate"
+            class="form-input"
+            [nzDisabledDate]="disabledDate"
+          ></nz-date-picker>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="phoneNumber"
+        >Phone Number</nz-form-label
+      >
+      <nz-form-control nzErrorTip="Please input the phone number!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            nz-input
+            type="text"
+            class="form-input"
+            placeholder="1234567890"
+            [(ngModel)]="friendToEdit.phoneNumber"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+</nz-modal>

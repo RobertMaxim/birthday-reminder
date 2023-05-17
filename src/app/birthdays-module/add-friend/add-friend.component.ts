@@ -3,8 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { differenceInCalendarDays, setHours } from 'date-fns';
 
-import { DisabledTimeFn, DisabledTimePartial } from 'ng-zorro-antd/date-picker';
-
 
 @Component({
   selector: 'app-add-friend',
@@ -14,8 +12,7 @@ import { DisabledTimeFn, DisabledTimePartial } from 'ng-zorro-antd/date-picker';
 export class AddFriendComponent implements OnInit {
   @Input('isVisible') isVisible: boolean = false;
   @Input('onAddClickSubject') clickSubject: Subject<void> = new Subject<void>();
-  friends:Friend[]=[];
-  
+  serializedFriend:string="";
   friendToAdd:Friend={
     lastName:'',
     firstName:'',
@@ -38,12 +35,14 @@ export class AddFriendComponent implements OnInit {
       this.isVisible = true;
     });
   }
+
   onCloseButtonClick(): void {
     this.isVisible = false;
     console.log('isVisible: ', this.isVisible);
   }
   onSubmitButtonClick():void{
-    console.log(this.friendToAdd);
+    this.serializedFriend = JSON.stringify(this.friendToAdd);
+    console.log(this.serializedFriend);
   }
   ngOnDestroy() {
     this.clickSubject.unsubscribe();

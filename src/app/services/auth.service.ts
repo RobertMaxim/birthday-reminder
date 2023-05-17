@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AuthService {
   userList: User[] = [
-    { email: 'benzema@yahoo.com', password: 'P@rola1423' },
+    { email: 'benzema@yahoo.com', password: 'P@rola1423'},
     { email: 'pepsi@trist.com', password: 'P@rola1423' },
     { email: 'roby_dark2001@yahoo.com', password: 'P@rola1423' },
     { email: 'aberes@yahoo.com', password: 'P@rola1423' },

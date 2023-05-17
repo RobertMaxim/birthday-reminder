@@ -15,7 +15,6 @@ export class RegisterComponent {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      debugger;
       this.authService.register(this.registeredUser);
       this.redirectToLogin();
     } else {

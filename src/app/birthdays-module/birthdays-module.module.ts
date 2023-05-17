@@ -15,12 +15,14 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { EditFriendComponent } from './edit-friend/edit-friend.component';
 
 @NgModule({
   declarations: [
     BirthdaysComponent,
     TopbarComponent,
     AddFriendComponent,
+    EditFriendComponent,
 
   ],
   imports: [

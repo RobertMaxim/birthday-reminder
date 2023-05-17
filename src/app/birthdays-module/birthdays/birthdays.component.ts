@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Friend } from '../../model/interface/friend';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-birthdays',
@@ -8,15 +9,22 @@ import { Subject } from 'rxjs';
   styleUrls: ['./birthdays.component.scss'],
 })
 export class BirthdaysComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   friendList: Friend[] = [];
   clickAddButton: Subject<void> = new Subject();
+  clickEditButton:Subject<void> = new Subject();
 
   onAddButtonClick(): void {
     this.clickAddButton.next();
   }
+  onEditButtonClick():void{
+    this.clickEditButton.next();
+  }
 
   ngOnInit(): void {
+    if(!sessionStorage.getItem("loggedInUserEmail")){
+      this.router.navigateByUrl('/')
+    }
     let friend: Friend = {
       lastName: 'Maxim',
       firstName: 'Robert - Gabriel',

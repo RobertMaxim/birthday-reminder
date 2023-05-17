@@ -1,7 +1,9 @@
 <app-add-friend [onAddClickSubject]="clickAddButton"> </app-add-friend>
+<app-edit-friend [onEditClickSubject]="clickEditButton"></app-edit-friend>
 <nz-layout>
   <nz-header>
-    <app-topbar (addFriendEvent)="onAddButtonClick()"></app-topbar>
+    <app-topbar (addFriendEvent)="onAddButtonClick()"
+                (editFriendEvent)="onEditButtonClick()"></app-topbar>
   </nz-header>
   <nz-content class="content-class">
     <nz-table

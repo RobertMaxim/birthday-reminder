@@ -16,6 +16,7 @@ export class LoginComponent {
   submitForm(): void {
     if (this.validateForm.valid) {
       if (this.authService.login(this.loggingUser)) {
+        sessionStorage.setItem("loggedInUserEmail",this.loggingUser.email);
         this.router.navigateByUrl("/birthdays");
       }
       else {

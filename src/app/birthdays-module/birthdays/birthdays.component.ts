@@ -13,16 +13,24 @@ export class BirthdaysComponent implements OnInit {
   constructor(private router: Router) {}
   friendList: Friend[] = [];
   clickAddButton: Subject<void> = new Subject();
-  clickEditButton:Subject<void> = new Subject();
+  clickEditButton:Subject<string> = new Subject();
   onAddButtonClick(): void {
     this.clickAddButton.next();
   }
   onEditButtonClick():void{
-    this.clickEditButton.next();
+    if(this.setOfCheckedId.size!=0){
+      let [emailOfUserToBeEdited] =this.setOfCheckedId;
+      this.clickEditButton.next(emailOfUserToBeEdited);
+    }
+    else{
+      alert("Select a friend first!");
+
+    }
   }
   setOfCheckedId = new Set<string>();
   updateCheckedSet(email: string, checked: boolean): void {
     if (checked) {
+      this.setOfCheckedId.clear();
       this.setOfCheckedId.add(email);
     } else {
       this.setOfCheckedId.delete(email);
@@ -40,18 +48,18 @@ export class BirthdaysComponent implements OnInit {
       this.router.navigateByUrl('/')
     }
     let friend: Friend = {
-      lastName: '0Maxim',
+      lastName: 'Maxim',
       firstName: 'Robert - Gabriel',
       email: 'rmaxim@talentingsoftware.com',
       birthdate: new Date(2001, 11, 12),
       phoneNumber: '0771456682',
     };
     let friend2: Friend = {
-      lastName: '1Maxim',
-      firstName: 'Robert1 - Gabriel',
-      email: 'rmaxim1@talentingsoftware.com',
-      birthdate: new Date(2001, 11, 12),
-      phoneNumber: '1771456682',
+      lastName: 'Beres',
+      firstName: 'Andrei - Daniel',
+      email: 'aberes@talentingsoftware.com',
+      birthdate: new Date(2002, 2, 15),
+      phoneNumber: '0771456682',
     };
 
 

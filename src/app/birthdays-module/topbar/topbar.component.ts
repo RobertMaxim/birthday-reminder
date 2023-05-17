@@ -23,18 +23,12 @@ export class TopbarComponent {
     this.addFriendEvent.emit();
   }
   onEditButtonClick() {
-    console.log("received event");
     this.editFriendEvent.emit();
   }
 
 
 
   logout() {
-    var user = JSON.parse(sessionStorage.getItem("loggedInUserEmail") || '');
-    if (user != '' && user.rememberMe == true) {
-      this.router.navigateByUrl('/');
-      return;
-    }
     sessionStorage.clear();
     this.router.navigateByUrl('/')
   }

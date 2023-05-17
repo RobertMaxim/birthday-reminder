@@ -2,8 +2,10 @@
 <app-edit-friend [onEditClickSubject]="clickEditButton"></app-edit-friend>
 <nz-layout>
   <nz-header>
-    <app-topbar (addFriendEvent)="onAddButtonClick()"
-                (editFriendEvent)="onEditButtonClick()"></app-topbar>
+    <app-topbar
+      (addFriendEvent)="onAddButtonClick()"
+      (editFriendEvent)="onEditButtonClick()"
+    ></app-topbar>
   </nz-header>
   <nz-content class="content-class">
     <nz-table
@@ -15,16 +17,20 @@
     >
       <thead>
         <tr>
-          <th  >Last Name</th>
-          <th > First Name</th>
-          <th >Email</th>
-          <th >Birthdate</th>
-          <th >Phone Number</th>
+          <th>Check</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Birthdate</th>
+          <th>Phone Number</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let friend of friendList">
-          <td [nzChecked]="setOfCheckedId.has(friend.email)" (nzCheckedChange)="onItemChecked(friend.email, $event)"></td>
+          <td
+            [nzChecked]="setOfCheckedId.has(friend.email)"
+            (nzCheckedChange)="onItemChecked(friend.email, $event)"
+          ></td>
           <td>{{ friend.lastName }}</td>
           <td>{{ friend.firstName }}</td>
           <td>{{ friend.email }}</td>

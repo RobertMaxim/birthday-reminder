@@ -10,7 +10,7 @@ import { differenceInCalendarDays, setHours } from 'date-fns';
 })
 export class EditFriendComponent {
   isVisible: boolean = false;
-  @Input('onEditClickSubject') clickSubject: Subject<void> = new Subject<void>();
+  @Input('onEditClickSubject') clickSubject: Subject<string> = new Subject<string>();
   serializedFriend:string="";
   friendToEdit:Friend={
     lastName:'Edit',
@@ -25,7 +25,9 @@ export class EditFriendComponent {
   differenceInCalendarDays(current, this.today) > 0;
 
   ngOnInit(): void {
-    this.clickSubject.subscribe(() => {
+    this.clickSubject.subscribe((receivedEmail) => {
+      console.log(receivedEmail);
+
       this.friendToEdit.lastName='Edit';
       this.friendToEdit.firstName='Edit';
       this.friendToEdit.email='Edit';

@@ -11,17 +11,22 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   validateForm!: UntypedFormGroup;
-  loggingUser: User = { email: '', password: ''};
+  loggingUser: User = { email: '', password: '' };
 
   submitForm(): void {
     if (this.validateForm.valid) {
       if (this.authService.login(this.loggingUser)) {
-        sessionStorage.setItem("loggedInUserEmail",this.loggingUser.email);
+        var storeUserData = {
+          email: this.loggingUser.email,
+          rememberMe: this.loggingUser.rememberMe
+        };
+        sessionStorage.setItem("loggedInUserEmail", JSON.stringify(storeUserData));
         this.router.navigateByUrl("/birthdays");
       }
       else {
-        this.loggingUser.email='';
-        this.loggingUser.password='';
+        this.loggingUser.email = '';
+        this.loggingUser.password = '';
+        this.loggingUser.rememberMe = false;
         this.router.navigateByUrl('/');
       }
     } else {
@@ -40,6 +45,17 @@ export class LoginComponent {
 
   constructor(private fb: UntypedFormBuilder, private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
+    if (sessionStorage.getItem("loggedInUserEmail")) {
+      var user = JSON.parse(sessionStorage.getItem("loggedInUserEmail") || '');
+      if (user != '' && user.rememberMe == true) {
+        var rememberedUser = this.authService.getUserByEmail(user.email);
+        if (rememberedUser != undefined) {
+          this.loggingUser.email = rememberedUser.email;
+          this.loggingUser.password = rememberedUser.password;
+          this.loggingUser.rememberMe = true;
+        }
+      }
+    }
     this.validateForm = this.fb.group({
       email: [null, [Validators.required,
       Validators.pattern("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")]],

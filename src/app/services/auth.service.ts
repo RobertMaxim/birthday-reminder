@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,8 @@ export class AuthService {
     { email: 'test@yahoo.com', password: 'P@rola1423' },
   ];
 
+  baseUrl="https://rickandmortyapi.com/api/character/";
+
   register(userToBeRegistered: User) {
     this.userList.push(userToBeRegistered);
   }
@@ -26,5 +29,13 @@ export class AuthService {
     );
   }
 
-  constructor() { }
+  getUserByEmail(email: string): User | undefined {
+    return this.userList.find(data => data.email == email);
+  }
+
+  getAvatar(){
+    return this.http.get<string>(this.baseUrl+Math.floor(Math.random()*(826)+1));
+  }
+
+  constructor(private http:HttpClient) { }
 }

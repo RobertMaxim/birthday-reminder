@@ -46,9 +46,9 @@ export class LoginComponent {
   constructor(private fb: UntypedFormBuilder, private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     if (sessionStorage.getItem("loggedInUserEmail")) {
-      var user = JSON.parse(sessionStorage.getItem("loggedInUserEmail") || '');
-      if (user != '' && user.rememberMe == true) {
-        var rememberedUser = this.authService.getUserByEmail(user.email);
+      var user = sessionStorage.getItem("loggedInUserEmail");
+      if (user ) {
+        var rememberedUser = this.authService.getUserByEmail(user);
         if (rememberedUser != undefined) {
           this.loggingUser.email = rememberedUser.email;
           this.loggingUser.password = rememberedUser.password;

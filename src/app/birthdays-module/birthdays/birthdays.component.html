@@ -1,4 +1,4 @@
-<app-add-friend [onAddClickSubject]="clickAddButton"> </app-add-friend>
+<app-add-friend [onAddClickSubject]="clickAddButton" (friendListModifiedEvent)="clickSubmitButton()"> </app-add-friend>
 <app-edit-friend [onEditClickSubject]="clickEditButton"></app-edit-friend>
 <nz-layout>
   <nz-header>

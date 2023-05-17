@@ -53,6 +53,13 @@ export class AuthService {
     return this.http.get<string>(this.baseUrl+Math.floor(Math.random()*(825)+1));
   }
 
+  addFriend(friendToAdd:Friend):void{
+    let loggedInUserEmail = sessionStorage.getItem("loggedInUserEmail");
+    if(loggedInUserEmail){
+      let loggedInUser = this.userList.find(u=>u.email==loggedInUserEmail);
+      loggedInUser?.friends?.push(friendToAdd);
+    }
+  }
   getFriendsForLoggedInUser():Friend[]{
     let loggedInUserEmail = sessionStorage.getItem("loggedInUserEmail");
     if(loggedInUserEmail){

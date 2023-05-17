@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Friend } from '../../model/interface/friend';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { NzTableSortFn } from 'ng-zorro-antd/table';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,6 +14,11 @@ export class BirthdaysComponent implements OnInit {
   friendList: Friend[] = [];
   clickAddButton: Subject<void> = new Subject();
   clickEditButton:Subject<string> = new Subject();
+
+  clickSubmitButton():void{
+    this.friendList = this.authService.getFriendsForLoggedInUser();
+  }
+
   onAddButtonClick(): void {
     this.clickAddButton.next();
   }

@@ -18,7 +18,17 @@ export class BirthdaysComponent implements OnInit {
   clickSubmitButton():void{
     this.friendList = this.authService.getFriendsForLoggedInUser();
   }
-
+  onRemoveButtonClick():void{
+    if(this.setOfCheckedId.size!=0){
+      let [emailOfFriendToBeDeleted] =this.setOfCheckedId;
+      this.authService.removeFriendByEmail(emailOfFriendToBeDeleted);
+      this.friendList = this.authService.getFriendsForLoggedInUser();
+      this.setOfCheckedId.clear();
+    }
+    else{
+      alert("Select a friend first!");
+    }
+  }
   onAddButtonClick(): void {
     this.clickAddButton.next();
   }

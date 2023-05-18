@@ -133,6 +133,20 @@ export class AuthService {
       }
     }
   }
+  removeFriendByEmail(emailOfFriendToBeDeleted:string):void{
+    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    if(loggedInUserEmail){
+      let userFriends = this.userList.find(u=>u.email == loggedInUserEmail).friends;
+      userFriends = userFriends.filter(f=>f.email!==emailOfFriendToBeDeleted);
+      for(let i =0;i<this.userList.length;i++)
+      {
+        if(this.userList[i].email == loggedInUserEmail){
+          this.userList[i].friends = userFriends;
+          return;
+        }
+      }
+    }
+  }
 
   constructor(private http: HttpClient) {}
 }

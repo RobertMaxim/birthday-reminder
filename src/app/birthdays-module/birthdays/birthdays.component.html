@@ -1,11 +1,12 @@
 <app-add-friend [onAddClickSubject]="clickAddButton" (friendListModifiedEvent)="clickSubmitButton()"> </app-add-friend>
-<app-edit-friend [onEditClickSubject]="clickEditButton"></app-edit-friend>
+<app-edit-friend [onEditClickSubject]="clickEditButton" (friendListModifiedEvent)="clickSubmitButton()"></app-edit-friend>
 <nz-layout>
   <nz-header>
     <app-topbar
       (addFriendEvent)="onAddButtonClick()"
       (editFriendEvent)="onEditButtonClick()"
       (removeFriendEvent)="onRemoveButtonClick()"
+      (closestBirthdayEvent)="onClosestBirthdayButtonClick()"
     ></app-topbar>
   </nz-header>
   <nz-content class="content-class">

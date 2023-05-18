@@ -37,7 +37,7 @@ import { EditFriendComponent } from './edit-friend/edit-friend.component';
     NzFormModule,
     ReactiveFormsModule,
     FormsModule,
-    NzDatePickerModule
+    NzDatePickerModule    
   ]
 })
 export class BirthdaysModuleModule { }

@@ -13,7 +13,7 @@ export class EditFriendComponent {
   constructor(private authService:AuthService){}
   isVisible: boolean = false;
   @Input('onEditClickSubject') clickSubject: Subject<string> = new Subject<string>();
-
+  @Output() friendListModifiedEvent = new EventEmitter();
 
   serializedFriend:string="";
   friendToEdit:Friend|null={
@@ -46,6 +46,7 @@ export class EditFriendComponent {
     this.serializedFriend = JSON.stringify(this.friendToEdit);
     console.log(this.serializedFriend);
     this.authService.updateFriendByEmail(this.friendToEdit);
+    this.friendListModifiedEvent.emit();
     this.isVisible = false;
   }
   ngOnDestroy() {

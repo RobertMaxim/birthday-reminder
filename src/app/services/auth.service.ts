@@ -82,6 +82,7 @@ export class AuthService {
       let loggedInUser = this.userList.find(
         (u) => u.email == loggedInUserEmail
       );
+      friendToAdd.birthdate=new Date(friendToAdd.birthdate);
       loggedInUser?.friends?.push(friendToAdd);
     }
   }
@@ -134,7 +135,7 @@ export class AuthService {
     }
   }
   removeFriendByEmail(emailOfFriendToBeDeleted:string):void{
-    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    let loggedInUserEmail = JSON.parse(sessionStorage.getItem('loggedInUserEmail')).email;
     if(loggedInUserEmail){
       let userFriends = this.userList.find(u=>u.email == loggedInUserEmail).friends;
       userFriends = userFriends.filter(f=>f.email!==emailOfFriendToBeDeleted);

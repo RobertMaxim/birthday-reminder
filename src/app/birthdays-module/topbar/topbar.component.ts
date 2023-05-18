@@ -12,6 +12,7 @@ export class TopbarComponent {
   @Output() addFriendEvent = new EventEmitter();
   @Output() editFriendEvent = new EventEmitter();
   @Output() removeFriendEvent = new EventEmitter();
+  @Output() closestBirthdayEvent = new EventEmitter();
   imageUrl: string = "";
 
   constructor(private router: Router, private authService: AuthService) { }
@@ -27,14 +28,17 @@ export class TopbarComponent {
   onEditButtonClick() {
     this.editFriendEvent.emit();
   }
-  onRemoveButtonClick(){
+  onRemoveButtonClick() {
     this.removeFriendEvent.emit();
+  }
+  onClosestBirthdayButtonClick() {
+    this.closestBirthdayEvent.emit();
   }
 
   logout() {
     if (sessionStorage.getItem("loggedInUserEmail")) {
       var user = JSON.parse(sessionStorage.getItem("loggedInUserEmail"));
-      if(user.rememberMe){
+      if (user.rememberMe) {
         this.router.navigateByUrl('/');
         return;
       }

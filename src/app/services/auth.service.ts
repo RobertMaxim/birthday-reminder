@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   addFriend(friendToAdd: Friend): void {
-    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    let loggedInUserEmail = JSON.parse(sessionStorage.getItem('loggedInUserEmail')).email;
     if (loggedInUserEmail) {
       let loggedInUser = this.userList.find(
         (u) => u.email == loggedInUserEmail
@@ -86,7 +86,7 @@ export class AuthService {
     }
   }
   getFriendsForLoggedInUser(): Friend[] {
-    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    let loggedInUserEmail = JSON.parse(sessionStorage.getItem('loggedInUserEmail')).email;
     if (loggedInUserEmail) {
       let loggedInUser = this.userList.find(
         (u) => u.email == loggedInUserEmail
@@ -97,7 +97,7 @@ export class AuthService {
   }
 
   getFriendByEmailForLoggedInUser(friendEmail: string): Friend | null {
-    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    let loggedInUserEmail = JSON.parse(sessionStorage.getItem('loggedInUserEmail')).email;
     if (loggedInUserEmail) {
       let loggedInUser = this.userList.find(
         (u) => u.email == loggedInUserEmail
@@ -117,7 +117,7 @@ export class AuthService {
   }
 
   updateFriendByEmail(updatedFriend: Friend): void {
-    let loggedInUserEmail = sessionStorage.getItem('loggedInUserEmail');
+    let loggedInUserEmail = JSON.parse(sessionStorage.getItem('loggedInUserEmail')).email;
     if (loggedInUserEmail) {
       for (let i = 0; i < this.userList.length; i++) {
         if(this.userList[i].email == loggedInUserEmail){

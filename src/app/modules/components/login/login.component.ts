@@ -20,7 +20,7 @@ export class LoginComponent {
           email: this.loggingUser.email,
           rememberMe: this.loggingUser.rememberMe
         };
-        sessionStorage.setItem("loggedInUserEmail", storeUserData.email);
+        sessionStorage.setItem("loggedInUserEmail", JSON.stringify(storeUserData));
         this.router.navigateByUrl("/birthdays");
       }
       else {
@@ -46,9 +46,9 @@ export class LoginComponent {
   constructor(private fb: UntypedFormBuilder, private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     if (sessionStorage.getItem("loggedInUserEmail")) {
-      var user = sessionStorage.getItem("loggedInUserEmail");
-      if (user ) {
-        var rememberedUser = this.authService.getUserByEmail(user);
+      var user = JSON.parse(sessionStorage.getItem("loggedInUserEmail"));
+      if (user) {
+        var rememberedUser = this.authService.getUserByEmail(user.email);
         if (rememberedUser != undefined) {
           this.loggingUser.email = rememberedUser.email;
           this.loggingUser.password = rememberedUser.password;

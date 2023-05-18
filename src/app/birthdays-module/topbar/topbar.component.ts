@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TopbarComponent {
   @Output() addFriendEvent = new EventEmitter();
   @Output() editFriendEvent = new EventEmitter();
+  @Output() removeFriendEvent = new EventEmitter();
   imageUrl: string = "";
 
   constructor(private router: Router, private authService: AuthService) { }
@@ -24,6 +25,9 @@ export class TopbarComponent {
   }
   onEditButtonClick() {
     this.editFriendEvent.emit();
+  }
+  onRemoveButtonClick(){
+    this.removeFriendEvent.emit();
   }
 
 

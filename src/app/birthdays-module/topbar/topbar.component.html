@@ -4,7 +4,7 @@
       <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
       Add
     </li>
-    <li nz-menu-item [nzDisabled]="true" class="disable-selection">
+    <li nz-menu-item class="disable-selection" (click)="onRemoveButtonClick()">
       <span nz-icon nzType="minus-circle" nzTheme="outline"></span>
       Remove
     </li>

@@ -11,14 +11,14 @@ export class AuthService {
     {
       lastName: 'Maxim',
       firstName: 'Robert - Gabriel',
-      email: 'rmaxim@talentingsoftware.com',
+      email: 'rmaxim@yahoo.com',
       birthdate: new Date(2001, 11, 12),
       phoneNumber: '0746311463',
     },
     {
       lastName: 'Beres',
       firstName: 'Andrei - Daniel',
-      email: 'aberes@talentingsoftware.com',
+      email: 'aberes@yahoo.com',
       birthdate: new Date(2002, 2, 15),
       phoneNumber: '0771456682',
     },
